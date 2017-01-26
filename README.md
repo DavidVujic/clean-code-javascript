@@ -1052,12 +1052,12 @@ class UserSettings {
   }
 
   changeSettings(settings) {
-    if (this.verifyCredentials()) {
+    if (this.hasValidCredentials()) {
       // ...
     }
   }
 
-  verifyCredentials() {
+  hasValidCredentials() {
     // ...
   }
 }
@@ -1065,29 +1065,24 @@ class UserSettings {
 
 **Good:**
 ```javascript
-class UserAuth {
-  constructor(user) {
-    this.user = user;
-  }
-
-  verifyCredentials() {
+// the module userAuth.js
+function hasValidCredentials(user) {
     // ...
-  }
 }
 
+export default hasValidCredentials;
 
-class UserSettings {
-  constructor(user) {
-    this.user = user;
-    this.auth = new UserAuth(user);
-  }
 
-  changeSettings(settings) {
-    if (this.auth.verifyCredentials()) {
-      // ...
+// the module userSettings.js
+import hasValidCredentials from 'userAuth.js';
+
+function changeSettings(user, settings) {
+    if (hasValidCredentials(user)) {
+        // ...
     }
-  }
 }
+
+export default changeSettings;
 ```
 **[⬆ back to top](#table-of-contents)**
 
