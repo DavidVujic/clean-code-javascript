@@ -968,21 +968,18 @@ account.balance = 100;
 **Good:**
 ```javascript
 function makeBankAccount() {
+  // this one is private
   let balance = 0;
-  // ...
 
-  function isValid(amount) {
-    // ...
-  }
-
+  // a "getter", made public via the returned object below
   function getBalance() {
     return balance;
   }
 
-  function setBalance() {
-    if (isValid(amount)) {
-      balance = amount;
-    }
+  // a "setter", made public via the returned object below
+  function setBalance(amount) {
+    // ... validate before updating the balance
+    balance = amount;
   }
 
   return {
@@ -995,6 +992,8 @@ function makeBankAccount() {
 const account = makeBankAccount();
 account.setBalance(100);
 ```
+[full example](examples/use-getters-and-setters-GOOD.js)
+
 **[⬆ back to top](#table-of-contents)**
 
 
