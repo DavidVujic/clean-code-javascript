@@ -773,46 +773,53 @@ just do one thing.
 
 **Bad:**
 ```javascript
-class Airplane {
+function makeAirplane(config) {
   // ...
-  getCruisingAltitude() {
-    switch (this.type) {
+  function getCruisingAltitude() {
+    switch (config.type) {
       case '777':
-        return this.getMaxAltitude() - this.getPassengerCount();
+        return getMaxAltitude() - getPassengerCount();
       case 'Air Force One':
-        return this.getMaxAltitude();
+        return getMaxAltitude();
       case 'Cessna':
-        return this.getMaxAltitude() - this.getFuelExpenditure();
+        return getMaxAltitude() - getFuelExpenditure();
     }
   }
+  // ...
 }
 ```
 
 **Good:**
 ```javascript
-class Airplane {
+function makeAirplane(config) {
   // ...
 }
 
-class Boeing777 extends Airplane {
-  // ...
-  getCruisingAltitude() {
-    return this.getMaxAltitude() - this.getPassengerCount();
-  }
+function makeBoeing777(config) {
+  const plane = makeAirplane(config);
+
+  plane.getCruisingAltitude = () =>
+    plane.getMaxAltitude() - plane.getPassengerCount();
+
+  return plane;
 }
 
-class AirForceOne extends Airplane {
-  // ...
-  getCruisingAltitude() {
-    return this.getMaxAltitude();
-  }
+function makeAirForceOne(config) {
+  const plane = makeAirplane(config);
+
+  plane.getCruisingAltitude = () =>
+    plane.getMaxAltitude();
+
+  return plane;
 }
 
-class Cessna extends Airplane {
-  // ...
-  getCruisingAltitude() {
-    return this.getMaxAltitude() - this.getFuelExpenditure();
-  }
+function makeCessna(config) {
+  const plane = makeAirplane(config);
+
+  plane.getCruisingAltitude = () =>
+    plane.getMaxAltitude() - plane.getFuelExpenditure();
+
+  return plane;
 }
 ```
 **[⬆ back to top](#table-of-contents)**
