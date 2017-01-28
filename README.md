@@ -798,8 +798,7 @@ function makeAirplane(config) {
 function makeBoeing777(config) {
   const plane = makeAirplane(config);
 
-  plane.getCruisingAltitude = () =>
-    plane.getMaxAltitude() - plane.getPassengerCount();
+  plane.getCruisingAltitude = () => plane.getMaxAltitude() - plane.getPassengerCount();
 
   return plane;
 }
@@ -807,8 +806,7 @@ function makeBoeing777(config) {
 function makeAirForceOne(config) {
   const plane = makeAirplane(config);
 
-  plane.getCruisingAltitude = () =>
-    plane.getMaxAltitude();
+  plane.getCruisingAltitude = () => plane.getMaxAltitude();
 
   return plane;
 }
@@ -816,8 +814,7 @@ function makeAirForceOne(config) {
 function makeCessna(config) {
   const plane = makeAirplane(config);
 
-  plane.getCruisingAltitude = () =>
-    plane.getMaxAltitude() - plane.getFuelExpenditure();
+  plane.getCruisingAltitude = () => plane.getMaxAltitude() - plane.getFuelExpenditure();
 
   return plane;
 }
