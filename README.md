@@ -819,6 +819,8 @@ function makeCessna(config) {
   return plane;
 }
 ```
+[full example](examples/avoid-conditionals-GOOD.js)
+
 **[⬆ back to top](#table-of-contents)**
 
 ### Avoid type-checking (part 1)
