@@ -1,5 +1,5 @@
 
-# clean-code-javascript
+# clean-code-javascript (Davids func remix)
 
 ## Table of Contents
   1. [Introduction](#introduction)
