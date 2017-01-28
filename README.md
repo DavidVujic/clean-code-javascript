@@ -1066,7 +1066,7 @@ class UserSettings {
 
 **Good:**
 ```javascript
-// the module userAuth.js
+// code in a module: userAuth.js
 function hasValidCredentials(user) {
     // ...
 }
@@ -1074,7 +1074,9 @@ function hasValidCredentials(user) {
 export default hasValidCredentials;
 
 
-// the module userSettings.js
+
+
+// code in a different module: userSettings.js
 import hasValidCredentials from 'userAuth.js';
 
 function changeSettings(user, settings) {
@@ -1082,8 +1084,6 @@ function changeSettings(user, settings) {
         // ...
     }
 }
-
-export default changeSettings;
 ```
 **[⬆ back to top](#table-of-contents)**
 
