@@ -1166,11 +1166,6 @@ function makeHttpRequester(adapter) {
     fetch,
   }
 }
-
-// example usage
-const adapter = makeNodeAdapter();
-const requester = makeHttpRequester(adapter);
-requester.fetch('http://github.com').then((res) => console.log(res));
 ```
 [full example](examples(open-closed-principle-GOOD.js))
 
