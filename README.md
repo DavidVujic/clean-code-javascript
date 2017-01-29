@@ -1066,17 +1066,15 @@ class UserSettings {
 
 **Good:**
 ```javascript
-// code in a module: userAuth.js
 function hasValidCredentials(user) {
     // ...
 }
 
 export default hasValidCredentials;
+```
 
-
-
-
-// code in a different module: userSettings.js
+Code in a separate module:
+```javascript
 import hasValidCredentials from 'userAuth.js';
 
 function changeSettings(user, settings) {
