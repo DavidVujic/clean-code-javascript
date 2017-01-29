@@ -1073,7 +1073,6 @@ function hasValidCredentials(user) {
 export default hasValidCredentials;
 ```
 
-Code in a separate module:
 ```javascript
 import hasValidCredentials from 'userAuth.js';
 
