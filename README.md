@@ -1167,7 +1167,7 @@ function makeHttpRequester(adapter) {
   }
 }
 ```
-[full example](examples/open-closed-principle-GOOD.js))
+[full example](examples/open-closed-principle-GOOD.js)
 
 **[⬆ back to top](#table-of-contents)**
 
