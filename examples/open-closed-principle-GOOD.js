@@ -1,28 +1,23 @@
-function makeAdapter(name) {
+function makeAjaxAdapter() {
   // ..
+  function request(url) {
+    // ... request, do ajax work and return promise
+  }
+
   return {
-    name,
+    request,
   };
 }
 
-function makeAjaxAdapter() {
-  let adapter = makeAdapter('ajaxAdapter');
-
-  adapter.request = function (url) {
-    // ... request, do ajax adapter work and return promise
-  }
-
-  return adapter;
-}
-
 function makeNodeAdapter() {
-  let adapter = makeAdapter('nodeAdapter');
-
-  adapter.request = function (url) {
-    // ... request, do node adapter work and return promise
+  // ..
+  function request(url) {
+    // ... request, do node work and return promise
   }
 
-  return adapter;
+  return {
+    request,
+  };
 }
 
 function makeHttpRequester(adapter) {

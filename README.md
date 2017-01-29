@@ -1092,16 +1092,14 @@ add new functionalities without changing existing code.
 
 **Bad:**
 ```javascript
-class AjaxAdapter extends Adapter {
+class AjaxAdapter {
   constructor() {
-    super();
     this.name = 'ajaxAdapter';
   }
 }
 
-class NodeAdapter extends Adapter {
+class NodeAdapter {
   constructor() {
-    super();
     this.name = 'nodeAdapter';
   }
 }
@@ -1116,7 +1114,7 @@ class HttpRequester {
       return makeAjaxCall(url).then((response) => {
         // transform response and return
       });
-    } else if (this.adapter.name === 'httpNodeAdapter') {
+    } else if (this.adapter.name === 'nodeAdapter') {
       return makeHttpCall(url).then((response) => {
         // transform response and return
       });
@@ -1136,23 +1134,25 @@ function makeHttpCall(url) {
 **Good:**
 ```javascript
 function makeAjaxAdapter() {
-  let adapter = makeAdapter('ajaxAdapter');
-
-  adapter.request = function (url) {
-    // ... request, do ajax adapter work and return promise
+  // ..
+  function request(url) {
+    // ... request, do ajax work and return promise
   }
 
-  return adapter;
+  return {
+    request,
+  };
 }
 
 function makeNodeAdapter() {
-  let adapter = makeAdapter('nodeAdapter');
-
-  adapter.request = function (url) {
-    // ... request, do node adapter work and return promise
+  // ..
+  function request(url) {
+    // ... request, do node work and return promise
   }
 
-  return adapter;
+  return {
+    request,
+  };
 }
 
 function makeHttpRequester(adapter) {
