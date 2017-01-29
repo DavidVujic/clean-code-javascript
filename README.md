@@ -1135,40 +1135,45 @@ function makeHttpCall(url) {
 
 **Good:**
 ```javascript
-class AjaxAdapter extends Adapter {
-  constructor() {
-    super();
-    this.name = 'ajaxAdapter';
+function makeAjaxAdapter() {
+  let adapter = makeAdapter('ajaxAdapter');
+
+  adapter.request = function (url) {
+    // ... request, do ajax adapter work and return promise
   }
 
-  request(url) {
-    // request and return promise
-  }
+  return adapter;
 }
 
-class NodeAdapter extends Adapter {
-  constructor() {
-    super();
-    this.name = 'nodeAdapter';
+function makeNodeAdapter() {
+  let adapter = makeAdapter('nodeAdapter');
+
+  adapter.request = function (url) {
+    // ... request, do node adapter work and return promise
   }
 
-  request(url) {
-    // request and return promise
-  }
+  return adapter;
 }
 
-class HttpRequester {
-  constructor(adapter) {
-    this.adapter = adapter;
-  }
-
+function makeHttpRequester(adapter) {
   fetch(url) {
-    return this.adapter.request(url).then((response) => {
+    return adapter.request(url).then((response) => {
       // transform response and return
     });
   }
+
+  return {
+    fetch,
+  }
 }
+
+// example usage
+const adapter = makeNodeAdapter();
+const requester = makeHttpRequester(adapter);
+requester.fetch('http://github.com').then((res) => console.log(res));
 ```
+[full example](examples(open-closed-principle-GOOD.js))
+
 **[⬆ back to top](#table-of-contents)**
 
 
