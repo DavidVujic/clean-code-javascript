@@ -4,7 +4,7 @@ function makeShape() {
   }
 
   function render(area) {
-    // ...
+    console.log(area);
   }
 
   return {
