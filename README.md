@@ -1242,68 +1242,43 @@ renderLargeRectangles(rectangles);
 
 **Good:**
 ```javascript
-class Shape {
-  setColor(color) {
+function makeShape() {
+  function setColor(color) {
     // ...
   }
 
-  render(area) {
+  function render(area) {
     // ...
   }
+
+  return {
+    setColor,
+    render
+  };
 }
 
-class Rectangle extends Shape {
-  constructor() {
-    super();
-    this.width = 0;
-    this.height = 0;
-  }
+function makeRectangle(width, height) {
+  let shape = makeShape();
+  shape.getArea = () => width * height;
 
-  setWidth(width) {
-    this.width = width;
-  }
-
-  setHeight(height) {
-    this.height = height;
-  }
-
-  getArea() {
-    return this.width * this.height;
-  }
+  return shape;
 }
 
-class Square extends Shape {
-  constructor() {
-    super();
-    this.length = 0;
-  }
+function makeSquare(length) {
+  let shape = makeShape();
+  shape.getArea = () => length * length;
 
-  setLength(length) {
-    this.length = length;
-  }
-
-  getArea() {
-    return this.length * this.length;
-  }
+  return shape;
 }
 
 function renderLargeShapes(shapes) {
   shapes.forEach((shape) => {
-    switch (shape.constructor.name) {
-      case 'Square':
-        shape.setLength(5);
-        break;
-      case 'Rectangle':
-        shape.setWidth(4);
-        shape.setHeight(5);
-    }
-
     const area = shape.getArea();
     shape.render(area);
   });
 }
 
-const shapes = [new Rectangle(), new Rectangle(), new Square()];
+const shapes = [makeRectangle(3, 4), makeRectangle(4, 5), makeSquare(4)];
 renderLargeShapes(shapes);
 ```
 **[⬆ back to top](#table-of-contents)**
