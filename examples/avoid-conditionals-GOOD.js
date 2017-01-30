@@ -53,6 +53,6 @@ const config = {
   passengers: 200,
   fuelExpenditure: 10,
   cruisingAltitude: 800
-}
+};
 
 const cessna = makeCessna(config);

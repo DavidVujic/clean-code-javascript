@@ -1,3 +1,4 @@
+/*global fetch */
 function makeAjaxAdapter() {
   // ..
   function request(url) {
@@ -21,7 +22,7 @@ function makeNodeAdapter() {
 }
 
 function makeHttpRequester(adapter) {
-  fetch(url) {
+  function fetch(url) {
     return adapter.request(url).then((response) => {
       // transform response and return
     });
@@ -29,7 +30,7 @@ function makeHttpRequester(adapter) {
 
   return {
     fetch,
-  }
+  };
 }
 
 // example usage

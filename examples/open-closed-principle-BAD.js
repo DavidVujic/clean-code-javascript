@@ -1,3 +1,4 @@
+/*global makeAjaxCall, makeHttpCall */
 class AjaxAdapter {
   constructor() {
     this.name = 'ajaxAdapter';

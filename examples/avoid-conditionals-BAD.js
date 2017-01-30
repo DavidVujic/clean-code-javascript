@@ -1,16 +1,15 @@
 function makeAirplane(config) {
   function getMaxAltitude() {
-  return config.altitude;
-}
+    return config.altitude;
+  }
 
-function getPassengerCount() {
-  return config.passengers;
-}
+  function getPassengerCount() {
+    return config.passengers;
+  }
 
-function getFuelExpenditure() {
-  return config.fuelExpenditure;
-}
-
+  function getFuelExpenditure() {
+    return config.fuelExpenditure;
+  }
 
   function getCruisingAltitude() {
     switch (config.type) {
@@ -28,5 +27,5 @@ function getFuelExpenditure() {
     getPassengerCount,
     getFuelExpenditure,
     getCruisingAltitude
-  }
+  };
 }

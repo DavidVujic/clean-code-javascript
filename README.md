@@ -985,7 +985,7 @@ function makeBankAccount() {
   return {
     // ...
     getBalance,
-    setBalance
+    setBalance,
   };
 }
 
@@ -1156,7 +1156,7 @@ function makeNodeAdapter() {
 }
 
 function makeHttpRequester(adapter) {
-  fetch(url) {
+  function fetch(url) {
     return adapter.request(url).then((response) => {
       // transform response and return
     });
@@ -1164,7 +1164,7 @@ function makeHttpRequester(adapter) {
 
   return {
     fetch,
-  }
+  };
 }
 ```
 [full example](examples/open-closed-principle-GOOD.js)

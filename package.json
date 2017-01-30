@@ -1,0 +1,25 @@
+{
+  "name": "clean-code-javascript-func-remix",
+  "version": "1.0.0",
+  "description": "Clean Code JavaScript (Davids func remix)",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidVujic/clean-code-javascript.git"
+  },
+  "author": "David Vujic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DavidVujic/clean-code-javascript/issues"
+  },
+  "homepage": "https://github.com/DavidVujic/clean-code-javascript#readme",
+  "devDependencies": {
+    "eslint": "^3.14.1"
+  }
+}
