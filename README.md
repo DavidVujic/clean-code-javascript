@@ -1134,24 +1134,22 @@ function makeHttpCall(url) {
 **Good:**
 ```javascript
 function makeAjaxAdapter() {
-  // ..
   function request(url) {
-    // ... request, do ajax work and return promise
+    // ... make an http request, do AJAX work and return promise
   }
 
   return {
-    request,
+    request
   };
 }
 
 function makeNodeAdapter() {
-  // ..
   function request(url) {
-    // ... request, do node work and return promise
+    // ... make an http request, do NODE work and return promise
   }
 
   return {
-    request,
+    request
   };
 }
 
