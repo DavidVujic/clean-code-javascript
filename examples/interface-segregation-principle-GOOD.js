@@ -31,14 +31,25 @@ function makeFeedback(obj) {
   };
 }
 
-function makeUserMessage() {
+// Implementations
+
+function makeFeedbackMessage() {
   var obj = {};
   var message = makeMessage(obj);
   var feedback = makeFeedback(obj);
-  var rating = makeRating(obj);
 
   return {
     share: feedback.share,
+    send: message.send
+  };
+}
+
+function makeRatingMessage() {
+  var obj = {};
+  var message = makeMessage(obj);
+  var rating = makeRating(obj);
+
+  return {
     rate: rating.rate,
     send: message.send
   };
