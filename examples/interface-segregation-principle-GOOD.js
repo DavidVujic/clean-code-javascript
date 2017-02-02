@@ -31,17 +31,6 @@ function makeFeedback(obj) {
   };
 }
 
-function makeFeedbackMessage() {
-  var obj = {};
-  var message = makeMessage(obj);
-  var feedback = makeFeedback(obj);
-
-  return {
-    share: feedback.share,
-    send: message.send
-  };
-}
-
 function makeUserMessage() {
   var obj = {};
   var message = makeMessage(obj);
