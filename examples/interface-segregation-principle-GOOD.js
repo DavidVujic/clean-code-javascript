@@ -1,56 +1,65 @@
-function makeMessage(obj) {
-  function send() {
-    console.log(obj);
-  }
-  return {
-    send
-  };
+function sendMessage(message) {
+  console.log(message);
 }
+
 
 function makeRating(obj) {
-  obj.stars = 0;
+  let rating = 0;
 
-  function rate(stars) {
-    obj.stars = stars;
-  }
+  const get = () => rating;
+  const set = (stars) => rating = stars;
 
   return {
-    rate
+    get,
+    set
   };
 }
 
-function makeFeedback(obj) {
-  obj.feedback = [];
+function makeFeedback() {
+  const feedback = [];
 
-  function share(message) {
-    obj.feedback.push(message);
-  }
+  const get = () => feedback;
+  const add = (message) => feedback.push(message);
 
   return {
-    share
+    get,
+    add
   };
 }
 
 // Implementations
 
 function makeFeedbackMessage() {
-  var obj = {};
-  var message = makeMessage(obj);
-  var feedback = makeFeedback(obj);
+  var feedback = makeFeedback();
+
+  function share(message) {
+    feedback.add(message);
+  }
+
+  function send() {
+    sendMessage(feedback.get());
+  }
 
   return {
-    share: feedback.share,
-    send: message.send
+    share,
+    send
   };
 }
 
+
 function makeRatingMessage() {
-  var obj = {};
-  var message = makeMessage(obj);
-  var rating = makeRating(obj);
+  var ratings = makeRating();
+
+  function rate(stars) {
+    ratings.set(stars);
+  }
+
+  function send() {
+    sendMessage(ratings.get());
+  }
 
   return {
-    rate: rating.rate,
-    send: message.send
+    rate,
+    send
   };
 }
