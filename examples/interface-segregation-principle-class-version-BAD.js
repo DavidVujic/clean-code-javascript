@@ -4,10 +4,6 @@ class Message {
     this._rating = 0;
   }
 
-  setRating(stars) {
-    this._rating = stars;
-  }
-
   addFeedback(message) {
     this._feedback.push(message);
   }
@@ -16,18 +12,23 @@ class Message {
     return this._feedback;
   }
 
+  // this method makes no sense to the Feedback subclass
   getRating() {
     return this._rating;
   }
 
+  // this method makes no sense to the Feedback subclass
+  setRating(stars) {
+    this._rating = stars;
+  }
+
+  // this method makes no sense to the Feedback subclass
   postMessage(message) {
     console.log(message);
   }
 }
 
-// "clients"
 class MessageForFeedback extends Message {
-
   share(message) {
     return super.addFeedback(message);
   }
