@@ -1,4 +1,4 @@
-// "interfaces"
+// several "interfaces", separated by feature
 function postMessage(message) {
   console.log(message);
 }
@@ -27,8 +27,7 @@ function makeFeedback() {
   };
 }
 
-// "clients"
-
+// different "clients", composed with features that makes sense
 function messageForFeedback() {
   var feedback = makeFeedback();
 
@@ -52,7 +51,7 @@ function messageForRating() {
   };
 }
 
-// usage
+// example usage
 const feedback = messageForFeedback();
 feedback.share('Good job!');
 const results = feedback.get();
