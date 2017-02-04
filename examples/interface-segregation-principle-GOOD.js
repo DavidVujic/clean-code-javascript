@@ -1,13 +1,13 @@
-function sendMessage(message) {
+// "interfaces"
+function postMessage(message) {
   console.log(message);
 }
 
+function makeRating() {
+  let stars = 0;
 
-function makeRating(obj) {
-  let rating = 0;
-
-  const get = () => rating;
-  const set = (stars) => rating = stars;
+  const get = () => stars;
+  const set = (numberOfStars) => stars = numberOfStars;
 
   return {
     get,
@@ -16,10 +16,10 @@ function makeRating(obj) {
 }
 
 function makeFeedback() {
-  const feedback = [];
+  const messages = [];
 
-  const get = () => feedback;
-  const add = (message) => feedback.push(message);
+  const get = () => messages;
+  const add = (message) => messages.push(message);
 
   return {
     get,
@@ -27,39 +27,36 @@ function makeFeedback() {
   };
 }
 
-// Implementations
+// "clients"
 
-function makeFeedbackMessage() {
+function messageForFeedback() {
   var feedback = makeFeedback();
 
-  function share(message) {
-    feedback.add(message);
-  }
-
-  function send() {
-    sendMessage(feedback.get());
-  }
+  const share = (message) => feedback.add(message);
 
   return {
     share,
-    send
+    get: feedback.get
   };
 }
 
-
-function makeRatingMessage() {
+function messageForRating() {
   var ratings = makeRating();
 
-  function rate(stars) {
-    ratings.set(stars);
-  }
-
-  function send() {
-    sendMessage(ratings.get());
-  }
+  const rate = (stars) => ratings.set(stars);
+  const send = () => postMessage(ratings.get());
 
   return {
     rate,
     send
   };
 }
+
+// usage
+const feedback = messageForFeedback();
+feedback.share('Good job!');
+const results = feedback.get();
+
+const ratings = messageForRating();
+ratings.rate(5);
+ratings.send();
