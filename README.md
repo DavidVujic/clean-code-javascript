@@ -1362,38 +1362,15 @@ function makeFeedback() {
 ```
 
 ```javascript
-// different "clients", composed with features that makes sense
-function messageForFeedback() {
-  var feedback = makeFeedback();
+// example usage: different "clients", composed with features that makes sense
+const feedback = makeFeedback();
+feedback.add('Good job!');
 
-  const share = (message) => feedback.add(message);
+const ratings = makeRating();
+ratings.set(5);
 
-  return {
-    share,
-    get: feedback.get
-  };
-}
-
-function messageForRating() {
-  var ratings = makeRating();
-
-  const rate = (stars) => ratings.set(stars);
-  const send = () => postMessage(ratings.get());
-
-  return {
-    rate,
-    send
-  };
-}
-
-// example usage
-const feedback = messageForFeedback();
-feedback.share('Good job!');
-const results = feedback.get();
-
-const ratings = messageForRating();
-ratings.rate(5);
-ratings.send();
+postMessage(feedback);
+postMessage(ratings);
 ```
 **[⬆ back to top](#table-of-contents)**
 
