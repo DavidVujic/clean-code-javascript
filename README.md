@@ -1369,8 +1369,8 @@ feedback.add('Good job!');
 const ratings = makeRating();
 ratings.set(5);
 
-postMessage(feedback);
-postMessage(ratings);
+postMessage(feedback.get());
+postMessage(ratings.get());
 ```
 **[⬆ back to top](#table-of-contents)**
 
